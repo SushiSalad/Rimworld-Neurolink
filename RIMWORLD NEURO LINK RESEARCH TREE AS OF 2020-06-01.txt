@@ -1,0 +1,55 @@
+
+Rimworld Neurolink
+	Research Tree
+		- Colony must have hi-tech research bench researched before they can start any of the following research trees.
+		CLONING BASE
+			- This is the base research node for cloning. It is to be largely based off of AppleConnoiseur's mod "QuestionableEthics." This allows the colony to construct a "Cloning Vat" and "Brain Scanner." (Names might change.)
+			- 
+			- This will also unlock some kind of crafting table that allows colonists to make the supplies needed to create a human body from various materials.
+			- 
+			- This is not connected to the neuro base yet and only allows for making clones directly from another pawn.
+			- 
+			- The cloning process takes time and is initially slow until upgrades are unlocked. Each body also has a slight chance of developing some kind of mutation whether good or bad. It should be weighted more towards bad mutations to encourage upgrading.
+			Efficient Vats
+				- Unlocks vats that are more efficient at growing bodies and reduces the amount of genetic errors that occur.
+			# Neuro Link Compatibility
+		NEURO BASE
+			- The base research for Neuro-linking.
+			- 
+			- Unlocks the ability to craft "Neuro-link Module" and "Neuro Mainframe"
+			- 
+			- The module is a crafted object that is surgically attached to a colonist's head. It allows the colonist to create a direct connection between their brain and a mainframe computer. It might also allow connections between other objects later on, but I'm not sure yet.
+			- 
+			- The mainframe is what downloads a colonist's consciousness and enables the ability to copy it to cloned or robotic bodies. This computer is the basis of all things to do with modifying consciousnesses. The computer will be able to be upgraded later on either by direct modifications or physical objects placed near or directly around it. The mainframe uses little power unless it is in the process of modifying/copying someones consciousness or running simulations, etc.
+			CPU Extension
+				- Allow the colony to directly upgrade the mainframe's CPU to allow for simulations and more accurate simulations down the road.
+				CPU Extension +
+					- Same as last but increases CPU power more.
+			Data Extension
+				- Unlocks colony ability to craft storage blocks that increase the amount of consciousnesses that can be stored.
+				Data Extension +
+					- Same as last but allows for larger storage in a single block.
+			Neuro Link Compatibility
+				- This allows the vats to be connected to the mainframe allowing the ability to copy a consciousness straight to a cloned body.
+			Robotic Combatibility
+				- This research node is meant to allow the colonists to upload their consciousness to a robot. We want to have this work with MISC robots in order to save ourselves time with programming our own robots and making art and all that.
+				- 
+				- I'm not sure exactly how this is going to be designed, however. I'm thinking maybe have a MISC robot that allows for the uploading of a colonist's consciousness.
+				- 
+				- The main issue with this (and it could totally be a non-issue) is that this makes our mod completely(?) rely on MISC Robots. But, I guess if the user just doesn't care about that part they could just have the mod and only use it for cloning.
+			Simulations
+				- This research node unlocks consciousnesses in the mainframe to run simulations that train them in certain skills. This unlocks the basic simulations of each skill while following nodes unlock higher quality simulations in single or grouped skills. These higher quality simulations fundamentally increase the speed at which the skill is being trained.
+				Combat Simulations Focus
+					- First step into higher quality combat simulations. Increases speed of melee and shooting skill training.
+					Advanced Combat Simulations
+						- Advanced combat simulations. Increases speed of melee and shooting skill training.
+				Construction Simulations Focus
+					Advanced Construction Simulations
+				Medical Simulations Focus
+					- Higher quality medical simulations.
+					Advanced Medical Simulations
+						- Advanced medical simulations.
+				Plants/Animal Simulations Focus
+					- Plants and Animals are grouped because idk i say so lol.
+					Advanced Animal Training Simulations
+					Advanced Growing Simulations
