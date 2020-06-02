@@ -42,6 +42,7 @@
     <None Include="..\Common\Patches\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Building_NeurolinkMainframe.cs" />
     <Compile Include="Neurolink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

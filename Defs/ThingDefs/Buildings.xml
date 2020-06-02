@@ -1,0 +1,65 @@
+<Defs>
+
+	<ThingDef Class="Neurolink.Building_NeurolinkMainframe" ParentName="BuildingBase">
+		<defName>NeurolinkMainframe</defName>
+		<label>neurolink mainframe</label>
+		<description>A mainframe computer with hard-drive and processing unit slots. Allows neurolink interfaces to upload their user's mind to its internal hard-drive.</description>
+		<stuffCategories>
+		  <li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>150</costStuffCount>
+		<costList>
+		  <ComponentIndustrial>10</ComponentIndustrial>
+		  <ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<statBases>
+		  <MaxHitPoints>250</MaxHitPoints>
+		  <WorkToBuild>5000</WorkToBuild>
+		  <Flammability>0.6</Flammability>
+		</statBases>
+		<graphicData>
+		  <texPath>Things/Building/Misc/CommsConsole</texPath>
+		  <graphicClass>Graphic_Multi</graphicClass>
+		  <drawSize>(5,4)</drawSize>
+		  <damageData>
+			<rect>(0,0,3,1.8)</rect>
+			<cornerBL>Damage/Corner</cornerBL>
+			<cornerBR>Damage/Corner</cornerBR>
+		  </damageData>
+		  <shadowData>
+			<volume>(3,0.5,2)</volume>
+		  </shadowData>
+		</graphicData>
+		<size>(3,2)</size>
+		<castEdgeShadows>false</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<canOverlapZones>false</canOverlapZones>
+		<comps>
+		  <li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>250</basePowerConsumption>
+			<shortCircuitInRain>true</shortCircuitInRain>
+		  </li>
+		  <li Class="CompProperties_Flickable"/>
+		  <li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>Misc</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<designationHotKey>Misc5</designationHotKey>
+		<placeWorkers>
+		  <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<researchPrerequisites>
+		  <li>NeurolinkBasics</li>
+		</researchPrerequisites>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>.
+	  </ThingDef>
+	  
+</Defs>
