@@ -1,8 +1,13 @@
-﻿using System;
+﻿using RimWorld;
+using Verse;
 
 namespace Neurolink
 {
-    public class Neurolink{
-        //Testing push
+	[StaticConstructorOnStartup]
+    public static class Neurolink{
+
+		static Neurolink() {
+			Log.Message("Hello World!");
+		}
     }
 }
