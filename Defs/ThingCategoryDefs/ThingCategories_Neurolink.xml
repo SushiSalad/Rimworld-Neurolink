@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Buildings -->
+	<ThingCategoryDef>
+		<defName>NeurolinkBuildings</defName>
+		<label>neurolink buildings</label>
+		<parent>Buildings</parent>
+	</ThingCategoryDef>
+
+	<!-- Items -->
+	<ThingCategoryDef>
+		<defName>NeurolinkItems</defName>
+		<label>neurolink items</label>
+		<parent>Items</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>NeurolinkInterface</defName>
+		<label>neurolink interface</label>
+		<parent>NeurolinkItems</parent>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>NeurolinkInterfaceFull</defName>
+		<label>neurolink interface full</label>
+		<parent>NeurolinkInterface</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>NeurolinkInterfaceEmpty</defName>
+		<label>neurolink interface empty</label>
+		<parent>NeurolinkInterface</parent>
+	</ThingCategoryDef>
+
+</Defs>
