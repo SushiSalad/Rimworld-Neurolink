@@ -21,9 +21,9 @@
       <ComponentSpacer>2</ComponentSpacer>
     </costList>
 		<recipes>
-      <li>UploadNeurolink</li>
+			<li>UploadNeurolink</li>
 			<li>DownloadNeurolink</li>
-    </recipes>
+		</recipes>
     <inspectorTabs>
       <li>ITab_Bills</li>
     </inspectorTabs>

@@ -1,6 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef>
-		<defName>Neurolink</defName>
-		<ingestible></ingestible>
-	</ThingDef>
-</Def>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>NeurolinkInterface</defName>
+    <label>neurolink interface</label>
+    <labelNoun>a neurolink interface</labelNoun>
+    <description>An installed neurolink interface.</description>
+    <!-- <descriptionHyperlinks><ThingDef>NeurolinkInterface</ThingDef></descriptionHyperlinks> -->
+    <addedPartProps>
+      <partEfficiency>0.65</partEfficiency>
+    </addedPartProps>
+    <spawnThingOnRemoved>NeurolinkInterface</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartProstheticMakeableBase">
+    <defName>NeurolinkInterface</defName>
+    <label>neurolink interface</label>
+    <description>A brain implant that allows a direct connects between a colonist's brain and a Neurolink Mainframe.</description>
+    <!-- <descriptionHyperlinks><RecipeDef>InstallNeurolink</RecipeDef></descriptionHyperlinks> -->
+    <costList>
+      <Steel>20</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallNeurolink</defName>
+    <label>install neurolink</label>
+    <description>Install a neurolink interface.</description>
+    <!-- <descriptionHyperlinks><ThingDef>Neurolink</ThingDef></descriptionHyperlinks> -->
+    <jobString>Installing neurolink interface.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>NeurolinkInterface</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>NeurolinkInterface</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>NeurolinkInterface</addsHediff>
+  </RecipeDef>
+</Defs>
