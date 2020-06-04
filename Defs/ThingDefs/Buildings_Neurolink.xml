@@ -1,73 +1,66 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef ParentName="BuildingBase">
-    <defName>NeurolinkMainframe</defName>
-    <label>neurolink mainframe</label>
-    <description>A mainframe computer with hard-drive and processing unit slots. Allows neurolink interfaces to upload their user's mind to its internal hard-drive.</description>
-		<thingClass>Building_WorkTable</thingClass>
+	<ThingDef ParentName="BuildingBase">
+		<defName>NeurolinkMainframe</defName>
+		<label>neurolink mainframe</label>
+		<description>A mainframe computer with hard-drive and processing unit slots. Allows neurolink interfaces to upload their user's mind to its internal hard-drive.</description>
+		<thingClass>Neurolink.Building_NeurolinkMainframe</thingClass>
 		<graphicData>
-      <texPath>Things/Building/Misc/LongRangeMineralScanner</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(4, 4)</drawSize>
-      <shadowData>
-        <volume>(1.4, 0.4, 1.4)</volume>
-        <offset>(0,0,-0.1)</offset>
-      </shadowData>
-    </graphicData>
-    <costList>
-      <Steel>200</Steel>
-      <ComponentIndustrial>10</ComponentIndustrial>
-      <ComponentSpacer>2</ComponentSpacer>
-    </costList>
-		<recipes>
-      <li>UploadNeurolink</li>
-			<li>DownloadNeurolink</li>
-    </recipes>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>700</basePowerConsumption>
-      </li>
-      <li Class="CompProperties_Breakdownable"/>
-      <li Class="CompProperties_Flickable"/>
+			<texPath>Things/Building/Misc/LongRangeMineralScanner</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4, 4)</drawSize>
+			<shadowData>
+				<volume>(1.4, 0.4, 1.4)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+		</graphicData>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>700</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Glower">
-        <glowRadius>6</glowRadius>
-        <glowColor>(217,112,33,0)</glowColor>
-      </li>
-    </comps>
-    <placeWorkers>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <altitudeLayer>Building</altitudeLayer>
-    <statBases>
-      <MaxHitPoints>250</MaxHitPoints>
-      <WorkToBuild>10000</WorkToBuild>
-      <Flammability>0.5</Flammability>
-    </statBases>
+				<glowRadius>6</glowRadius>
+				<glowColor>(217,112,33,0)</glowColor>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
 		<building>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-    </building>
-    <researchPrerequisites>
-      <li>LongRangeMineralScanner</li>
-    </researchPrerequisites>
-    <fillPercent>0.40</fillPercent>
-    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-    <pathCost>25</pathCost>
-    <rotatable>true</rotatable>
-    <hasInteractionCell>true</hasInteractionCell>
-    <interactionCellOffset>(0,0,2)</interactionCellOffset>
-    <interactionCellIcon>DiningChair</interactionCellIcon>
-    <interactionCellIconReverse>true</interactionCellIconReverse>
-    <defaultPlacingRot>South</defaultPlacingRot>
-    <canOverlapZones>false</canOverlapZones>
-    <size>(3, 3)</size>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<researchPrerequisites>
+			<li>LongRangeMineralScanner</li>
+		</researchPrerequisites>
+		<fillPercent>0.40</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>25</pathCost>
+		<rotatable>true</rotatable>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
+		<interactionCellIcon>DiningChair</interactionCellIcon>
+		<interactionCellIconReverse>true</interactionCellIconReverse>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<canOverlapZones>false</canOverlapZones>
+		<size>(3, 3)</size>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<designationCategory>Misc</designationCategory>
-  </ThingDef>
+	</ThingDef>
 	  
 </Defs>

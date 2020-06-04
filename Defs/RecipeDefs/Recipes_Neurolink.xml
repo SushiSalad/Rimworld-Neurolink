@@ -1,68 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<!-- Mainframe Bills -->
-  <RecipeDef>
-    <defName>UploadNeurolink</defName>
-    <label>upload neurolink</label>
-    <description>Upload a consciousness from a neurolink interface into the mainframe's internal hard-drive.</description>
-	<!-- <workerClass>Recipe_UploadNeurolink</workerClass> -->
-    <jobString>Uploading.</jobString>
-    <workAmount>180</workAmount>
-    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-    <effectWorking>Surgery</effectWorking>
-    <soundWorking>Recipe_Surgery</soundWorking>
-    <ingredients>
-      <li>
-        <filter>
-          <categories>
-            <li>NeurolinkInterface</li>
-          </categories>
-        </filter>
-        <count>1</count>
-      </li>
-    </ingredients>
-    <fixedIngredientFilter>
-      <categories>
-        <li>NeurolinkInterface</li>
-      </categories>
-      <disallowedCategories>
-        <li>NeurolinkInterfaceEmpty</li>
-      </disallowedCategories>
-    </fixedIngredientFilter>
-  </RecipeDef>
-
-	<RecipeDef>
-		<defName>DownloadNeurolink</defName>
-		<label>download neurolink</label>
-		<description>Download a consciousness from the mainframe's internal hard-drive into a neurolink interface.</description>
-		<!-- <workerClass>Recipe_DownloadNeurolink</workerClass> -->
-		<jobString>Downloading.</jobString>
-		<workAmount>180</workAmount>
-		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-		<effectWorking>Surgery</effectWorking>
-		<soundWorking>Recipe_Surgery</soundWorking>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>NeurolinkInterface</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>NeurolinkInterface</li>
-			</categories>
-			<disallowedCategories>
-				<li>NeurolinkInterfaceEmpty</li>
-			</disallowedCategories>
-		</fixedIngredientFilter>
-	</RecipeDef>
-
-	<!-- Neurolink Interface -->
 	
 
 </Defs>
