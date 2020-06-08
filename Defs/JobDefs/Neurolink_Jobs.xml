@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<JobDef>
+		<defName>Neurolink_UseMainframe</defName>
+		<driverClass>Neurolink.Neurolink_JobDriver_UseMainframe</driverClass>
+		<reportString>using neurolink mainframe.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+	
+</Defs>

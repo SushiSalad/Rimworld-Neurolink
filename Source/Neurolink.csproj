@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building_NeurolinkMainframe.cs" />
+    <Compile Include="Neurolink_JobDriver_UseMainframe.cs" />
+    <Compile Include="Neurolink_ConceptDefOf.cs" />
+    <Compile Include="Neurolink_JobDefOf.cs" />
     <Compile Include="Neurolink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ConceptDef ParentName="NotedOpportunisticBase">
+		<defName>Neurolink_UsingMainframe</defName>
+		<label>Using the neurolink mainframe</label>
+		<helpText>To use the mainframe, select a colonist and right-click on the neurolink mainframe.</helpText>
+	</ConceptDef>
+  
+</Defs>
