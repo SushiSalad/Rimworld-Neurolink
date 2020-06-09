@@ -16,6 +16,10 @@ namespace Neurolink {
 			}
 		}
 
+		public void DrawMainframeWindow() {
+			Find.WindowStack.Add(new Dialog_InfoCard(this));
+		}
+
 		public override void SpawnSetup(Map map, bool respawningAfterLoad) {
 			base.SpawnSetup(map, respawningAfterLoad);
 			this.powerComp = base.GetComp<CompPowerTrader>();
@@ -30,10 +34,10 @@ namespace Neurolink {
 				yield break;
 			}
 			Action action = delegate () {
-				Messages.Message("Neurolink_Mainframe_UseMessage".Translate(myPawn.Label), this, MessageTypeDefOf.NeutralEvent, false); //%TODO%
 				Job job = JobMaker.MakeJob(Neurolink_JobDefOf.Neurolink_UseMainframe, this);
 				myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 				PlayerKnowledgeDatabase.KnowledgeDemonstrated(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, KnowledgeAmount.Total);
+				DrawMainframeWindow();
 			};
 			yield return new FloatMenuOption("Use neurolink mainframe.", action, MenuOptionPriority.Default, null, null, 0f, null, null);
 			yield break;
