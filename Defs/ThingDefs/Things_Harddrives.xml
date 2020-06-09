@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName = "ResourceBase" Name = "NL_HarddriveBase">
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>100</MarketValue>
+			<Mass>0.25</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.0</DeteriorationRate>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<!-- Not entirely sure how I should define these yet. I based this file partly off of the
+		 Items_BrainScanning.xml file from Questionable Ethics Enhanced although they use a
+		 "<modExtensions>" tag that I excluded as well as the graphics tabs. There was also
+		 a "<thingCategories>" tag as well as a "<thingClass>" tag that I assume is how
+		 it interacts with the code.-->
+		 
+	<!-- Another quick note: for SOME reason there is an item that's being created from the ThingDef
+		 "NL_HarddriveBase" that doesn't have a defName or label so the game just automatically
+		 gives it a blank name and label and I have no clue why -->
+	
+	<ThingDef ParentName="NL_HarddriveBase">
+		<defName>NL_SmallHarddrive</defName>
+		<label>small harddrive</label>
+		<description>A small harddrive that allows the additional storage of a single consciousness. This one doesn't have anything stored on it.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>NL_Make_SmallHarddrive</RecipeDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+	
+	<ThingDef ParentName="NL_HarddriveBase">
+		<defName>NL_SmallHarddriveFilled</defName>
+		<label>small filled harddrive</label>
+		<description>A small harddrive that allows the additional storage of a single consciousness. This one has someone's consciousness stored on it.</description>
+	</ThingDef>
+	
+	<ThingDef ParentName="NL_HarddriveBase">
+		<defName>NL_LargeHarddrive</defName>
+		<label>large harddrive</label>
+		<description>A large harddrive that allows the additional storage of 2 consciousnesses. This one doesn't have anything stored on it.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>NL_Make_SmallHarddrive</RecipeDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+	
+	<ThingDef ParentName="NL_HarddriveBase">
+		<defName>NL_LargeHarddriveFilled</defName>
+		<label>large filled harddrive</label>
+		<description>A large harddrive that allows the additional storage of 2 consciousnesses. This one is full.</description>
+	</ThingDef>
+</Defs>

@@ -21,6 +21,8 @@
 		<parent>NeurolinkItems</parent>
 	</ThingCategoryDef>
 	
+	<!-- Arent we getting rid of these? -->
+	
 	<ThingCategoryDef>
 		<defName>NeurolinkInterfaceFull</defName>
 		<label>neurolink interface full</label>

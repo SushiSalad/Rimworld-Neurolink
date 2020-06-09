@@ -10,7 +10,7 @@ namespace Neurolink {
 		protected ThingOwner innerContainer = null;
 		private CompPowerTrader powerComp;
 
-		public bool CanUseMainframeNow {
+		public bool CanUseMainframeNow { //Checks if the building is usable by the pawn directed to do the job.
 			get {
 				return (!base.Spawned || !base.Map.gameConditionManager.ElectricityDisabled) && (this.powerComp == null || this.powerComp.PowerOn);
 			}
@@ -27,7 +27,7 @@ namespace Neurolink {
 			LessonAutoActivator.TeachOpportunity(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, OpportunityType.GoodToKnow);
 		}
 
-		public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn myPawn) {
+		public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn myPawn) { //Creates float menu option to use mainframe.
 			FloatMenuOption failureReason = this.GetFailureReason(myPawn);
 			if (failureReason != null) {
 				yield return failureReason;
@@ -43,7 +43,7 @@ namespace Neurolink {
 			yield break;
 		}
 
-		private FloatMenuOption GetFailureReason(Pawn myPawn) {
+		private FloatMenuOption GetFailureReason(Pawn myPawn) { //Finds failure reason.
 			if (!myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, TraverseMode.ByPawn)) {
 				return new FloatMenuOption("CannotUseNoPath".Translate(), null, MenuOptionPriority.Default, null, null, 0f, null, null);
 			}
@@ -69,11 +69,11 @@ namespace Neurolink {
 			return null;
 		}
 
-		public void GetChildHolders(List<IThingHolder> outChildren) {
+		public void GetChildHolders(List<IThingHolder> outChildren) { //?
 			ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
 		}
 
-		public ThingOwner GetDirectlyHeldThings() {
+		public ThingOwner GetDirectlyHeldThings() { //?
 			return innerContainer;
 		}
 	}
