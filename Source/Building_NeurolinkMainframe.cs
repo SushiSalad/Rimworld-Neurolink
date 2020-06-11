@@ -7,19 +7,23 @@ using Verse.AI;
 namespace Neurolink {
 	public class Building_NeurolinkMainframe : Building, IThingHolder {
 
-		protected ThingOwner innerContainer = null;
+		protected ThingOwner innerContainer = null; 
 		private CompPowerTrader powerComp;
 
-		public bool CanUseMainframeNow { //Checks if the building is usable by the pawn directed to do the job.
+
+		//Checks if the building is usable by the pawn directed to do the job.
+		public bool CanUseMainframeNow { 
 			get {
 				return (!base.Spawned || !base.Map.gameConditionManager.ElectricityDisabled) && (this.powerComp == null || this.powerComp.PowerOn);
 			}
 		}
 
+		//Draws the mainframe GUI
 		public void DrawMainframeWindow() {
 			Find.WindowStack.Add(new Dialog_InfoCard(this));
 		}
 
+		//Establishes that this building remains after reload and implements the tutor
 		public override void SpawnSetup(Map map, bool respawningAfterLoad) {
 			base.SpawnSetup(map, respawningAfterLoad);
 			this.powerComp = base.GetComp<CompPowerTrader>();
@@ -27,7 +31,8 @@ namespace Neurolink {
 			LessonAutoActivator.TeachOpportunity(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, OpportunityType.GoodToKnow);
 		}
 
-		public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn myPawn) { //Creates float menu option to use mainframe.
+		//Adds float menu options %TODO%: generify this so that it can accept the menu options
+		public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn myPawn) { 
 			FloatMenuOption failureReason = this.GetFailureReason(myPawn);
 			if (failureReason != null) {
 				yield return failureReason;
@@ -43,7 +48,8 @@ namespace Neurolink {
 			yield break;
 		}
 
-		private FloatMenuOption GetFailureReason(Pawn myPawn) { //Finds failure reason.
+		//Adds failure float menu options for various reasons
+		private FloatMenuOption GetFailureReason(Pawn myPawn) { 
 			if (!myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, TraverseMode.ByPawn)) {
 				return new FloatMenuOption("CannotUseNoPath".Translate(), null, MenuOptionPriority.Default, null, null, 0f, null, null);
 			}
@@ -69,11 +75,13 @@ namespace Neurolink {
 			return null;
 		}
 
-		public void GetChildHolders(List<IThingHolder> outChildren) { //?
+		//Adds the children containers (ThingHolders) to the input list
+		public void GetChildHolders(List<IThingHolder> outChildren) { 
 			ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
 		}
 
-		public ThingOwner GetDirectlyHeldThings() { //?
+		//Returns the container (ThingOwner) that holds the items within the mainframe
+		public ThingOwner GetDirectlyHeldThings() { 
 			return innerContainer;
 		}
 	}
