@@ -7,7 +7,8 @@ using Verse.AI;
 namespace Neurolink {
 	public class Building_NeurolinkMainframe : Building, IThingHolder {
 
-		protected ThingOwner innerContainer = null; 
+		protected ThingOwner innerContainer = null;
+		private int harddriveSlots = 1;
 		private CompPowerTrader powerComp;
 
 
@@ -18,16 +19,11 @@ namespace Neurolink {
 			}
 		}
 
-		//Draws the mainframe GUI
-		public void DrawMainframeWindow() {
-			Find.WindowStack.Add(new Dialog_InfoCard(this));
-		}
-
 		//Establishes that this building remains after reload and implements the tutor
 		public override void SpawnSetup(Map map, bool respawningAfterLoad) {
 			base.SpawnSetup(map, respawningAfterLoad);
 			this.powerComp = base.GetComp<CompPowerTrader>();
-			//LessonAutoActivator.TeachOpportunity(ConceptDefOf.BuildOrbitalTradeBeacon, OpportunityType.GoodToKnow);
+			//LessonAutoActivator.TeachOpportunity(ConceptDefOf.BuildHarddrive, OpportunityType.GoodToKnow);
 			LessonAutoActivator.TeachOpportunity(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, OpportunityType.GoodToKnow);
 		}
 
@@ -38,13 +34,18 @@ namespace Neurolink {
 				yield return failureReason;
 				yield break;
 			}
+			//Use mainframe
 			Action action = delegate () {
 				Job job = JobMaker.MakeJob(Neurolink_JobDefOf.Neurolink_UseMainframe, this);
 				myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 				PlayerKnowledgeDatabase.KnowledgeDemonstrated(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, KnowledgeAmount.Total);
-				DrawMainframeWindow();
 			};
-			yield return new FloatMenuOption("Use neurolink mainframe.", action, MenuOptionPriority.Default, null, null, 0f, null, null);
+			yield return new FloatMenuOption("Use neurolink mainframe", action, MenuOptionPriority.Default, null, null, 0f, null, null);
+			//Insert harddrive
+
+			//Remove harddrive
+
+			//Simulate...
 			yield break;
 		}
 

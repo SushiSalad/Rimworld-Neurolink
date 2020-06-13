@@ -7,7 +7,7 @@ namespace Neurolink
     public static class Neurolink{
 
 		static Neurolink() {
-			Log.Message("Hello World!");
+			Log.Message("Neurolink successfully loaded!");
 		}
     }
 }

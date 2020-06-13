@@ -14,12 +14,14 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
     <OutputPath>..\Common\Assemblies\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
+    <DocumentationFile>..\Common\Assemblies\Neurolink.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -40,9 +42,14 @@
     <None Include="..\Common\Defs\**" />
     <None Include="..\Common\Languages\**" />
     <None Include="..\Common\Patches\**" />
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building_NeurolinkMainframe.cs" />
+    <Compile Include="Neurolink_Dialog_Mainframe.cs" />
     <Compile Include="Neurolink_JobDriver_UseMainframe.cs" />
     <Compile Include="Neurolink_ConceptDefOf.cs" />
     <Compile Include="Neurolink_JobDefOf.cs" />
