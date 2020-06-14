@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName = "ResourceBase" Name = "NL_HarddriveBase">
+	<ThingDef ParentName = "ResourceBase" Name = "NL_HarddriveBase" Abstract = "True">
 		<tickerType>Normal</tickerType>
+		<thingClass>Neurolink.Neurolink_Harddrive</thingClass>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
 			<MarketValue>100</MarketValue>
@@ -18,11 +19,7 @@
 		 Items_BrainScanning.xml file from Questionable Ethics Enhanced although they use a
 		 "<modExtensions>" tag that I excluded as well as the graphics tabs. There was also
 		 a "<thingCategories>" tag as well as a "<thingClass>" tag that I assume is how
-		 it interacts with the code.-->
-		 
-	<!-- Another quick note: for SOME reason there is an item that's being created from the ThingDef
-		 "NL_HarddriveBase" that doesn't have a defName or label so the game just automatically
-		 gives it a blank name and label and I have no clue why -->
+		 it interacts with the code. -->
 	
 	<ThingDef ParentName="NL_HarddriveBase">
 		<defName>NL_SmallHarddrive</defName>
