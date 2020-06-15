@@ -23,6 +23,7 @@ namespace Neurolink {
 		public override void SpawnSetup(Map map, bool respawningAfterLoad) {
 			base.SpawnSetup(map, respawningAfterLoad);
 			this.powerComp = base.GetComp<CompPowerTrader>();
+			this.innerContainer = new ThingOwner<Neurolink_Harddrive>(this);
 			//LessonAutoActivator.TeachOpportunity(ConceptDefOf.BuildHarddrive, OpportunityType.GoodToKnow);
 			LessonAutoActivator.TeachOpportunity(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, OpportunityType.GoodToKnow);
 		}
@@ -39,6 +40,9 @@ namespace Neurolink {
 				Job job = JobMaker.MakeJob(Neurolink_JobDefOf.Neurolink_UseMainframe, this);
 				myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 				PlayerKnowledgeDatabase.KnowledgeDemonstrated(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, KnowledgeAmount.Total);
+				Log.Message("1");
+				innerContainer.TryAdd(new Neurolink_Harddrive(myPawn));
+				Log.Message("2");
 			};
 			yield return new FloatMenuOption("Use neurolink mainframe", action, MenuOptionPriority.Default, null, null, 0f, null, null);
 			//Insert harddrive

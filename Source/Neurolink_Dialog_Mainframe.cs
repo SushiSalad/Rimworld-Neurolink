@@ -7,8 +7,7 @@ namespace Neurolink {
 	class Neurolink_Dialog_Mainframe : Window {
 
 		private Building_NeurolinkMainframe thing = null;
-		//private Neurolink_HarddriveBase selectedHarddrive = null; //%TODO%
-		private Pawn selectedHarddrive = null;
+		private Neurolink_Harddrive selectedHarddrive = null;
 
 		private Neurolink_Dialog_Mainframe.InfoCardTab tab;
 
@@ -21,6 +20,7 @@ namespace Neurolink {
 			if (thing.GetType() == typeof(Building_NeurolinkMainframe)) {
 				this.thing = (Building_NeurolinkMainframe)thing;
 				this.Setup();
+				this.selectedHarddrive = this.thing.GetDirectlyHeldThings().RandomElement() as Neurolink_Harddrive;
 			} else {
 				Debug.Log("[Neurolink_Dialog_Mainframe ERROR] Not supplied with thing of type Building_NeurolinkMainframe");
 			}
@@ -39,28 +39,24 @@ namespace Neurolink {
 
 		private void FillInfoTabs(Rect cardRect) {
 			if (this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Character) {
-				//CharacterCardUtility.DrawCharacterCard(cardRect, this.selectedHarddrive.pawn, null, default(Rect)); //%TODO%
-				CharacterCardUtility.DrawCharacterCard(cardRect, this.selectedHarddrive, null, default(Rect));
+				CharacterCardUtility.DrawCharacterCard(cardRect, this.selectedHarddrive.pawn, null, default(Rect));
 			} else if (this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Stats) {
 				if (this.selectedHarddrive != null) {
-					//Thing innerPawn = this.selectedHarddrive.pawn; //%TODO%
-					Thing innerThing = this.selectedHarddrive;
+					Thing innerPawn = this.selectedHarddrive.pawn;
 					MinifiedThing minifiedThing = (Thing)this.selectedHarddrive as MinifiedThing;
 					if (minifiedThing != null) {
-						innerThing = minifiedThing.InnerThing;
+						innerPawn = minifiedThing.InnerThing;
 					}
-					StatsReportUtility.DrawStatsReport(cardRect, innerThing);
+					StatsReportUtility.DrawStatsReport(cardRect, innerPawn);
 				} 
 			//	else if (this.titleDef != null) { //%TODO%
 			//		StatsReportUtility.DrawStatsReport(cardRect, this.titleDef, this.faction);
 			//	}
 			} else if (this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Social) {
-				//SocialCardUtility.DrawSocialCard(cardRect, this.selectedHarddrive.pawn); //%TODO%
-				SocialCardUtility.DrawSocialCard(cardRect, this.selectedHarddrive);
+				SocialCardUtility.DrawSocialCard(cardRect, this.selectedHarddrive.pawn);
 			} else if (this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Needs) {
 				Vector2 scrollPos = default(Vector2);
-				//NeedsCardUtility.DoNeedsMoodAndThoughts(cardRect, this.selectedHarddrive.pawn, ref scrollPos); //%TODO%
-				NeedsCardUtility.DoNeedsMoodAndThoughts(cardRect, this.selectedHarddrive, ref scrollPos);
+				NeedsCardUtility.DoNeedsMoodAndThoughts(cardRect, this.selectedHarddrive.pawn, ref scrollPos);
 			}
 		}
 
@@ -85,7 +81,6 @@ namespace Neurolink {
 			Text.Font = GameFont.Small;
 			//Harddrive Info
 			Rect harddriveInfo = new Rect(innerRect.x, innerRect.y, innerRect.width / 2 - 17f, innerRect.height);
-			Widgets.DrawBoxSolid(harddriveInfo, Random.ColorHSV());
 			if (selectedHarddrive != null) {
 				Rect harddriveInfoTabs = harddriveInfo;
 				List<TabRecord> tabs = new List<TabRecord>();
@@ -93,8 +88,7 @@ namespace Neurolink {
 					this.tab = Neurolink_Dialog_Mainframe.InfoCardTab.Stats;
 				}, this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Stats);
 				tabs.Add(stats);
-				//if (selectedHarddrive.pawn.RaceProps.Humanlike) { //%TODO%
-				if (selectedHarddrive.RaceProps.Humanlike) {
+				if (selectedHarddrive.pawn.RaceProps.Humanlike) {
 					TabRecord character = new TabRecord("TabCharacter".Translate(), delegate () {
 						this.tab = Neurolink_Dialog_Mainframe.InfoCardTab.Character;
 					}, this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Character);
@@ -124,7 +118,6 @@ namespace Neurolink {
 				for (int i = 0; i < contents.Count; i++) {
 					float hdRectY = (harddrivesList.yMax / contents.Count);
 					hdRect[i] = new Rect(harddrivesList.x, harddrivesList.y + hdRectY * i, harddrivesList.width, hdRectY);
-					Widgets.DrawBox(hdRect[i]);
 				}
 			}
 			//Simulation

@@ -10,7 +10,11 @@ namespace Neurolink
 {
     public class Neurolink_Harddrive : ThingWithComps {
 
-        Pawn pawn; 
+        public Pawn pawn;
+
+		public Neurolink_Harddrive(Pawn pawn) {
+			CopyPawn(pawn);
+		}
 
         public void CopyPawn(Pawn basePawn) {
 
