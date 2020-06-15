@@ -54,7 +54,6 @@
     <Compile Include="Neurolink_ConceptDefOf.cs" />
     <Compile Include="Neurolink_JobDefOf.cs" />
     <Compile Include="Neurolink.cs" />
-    <Compile Include="PawnCopy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Neurolink_Harddrive.cs" />
   </ItemGroup>
