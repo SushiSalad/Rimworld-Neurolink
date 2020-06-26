@@ -11,6 +11,12 @@ namespace Neurolink {
 
 		private Neurolink_Dialog_Mainframe.InfoCardTab tab;
 
+		public override Vector2 InitialSize {
+			get {
+				return new Vector2(UI.screenWidth * .6f, UI.screenHeight * .6f);
+			}
+		}
+
 		private enum InfoCardTab : byte {
 			Character, Stats, Social, Needs
 		}
@@ -20,7 +26,7 @@ namespace Neurolink {
 			if (thing.GetType() == typeof(Building_NeurolinkMainframe)) {
 				this.thing = (Building_NeurolinkMainframe)thing;
 				this.Setup();
-				this.selectedHarddrive = this.thing.GetDirectlyHeldThings().RandomElement() as Neurolink_Harddrive;
+				this.selectedHarddrive = this.thing.GetDirectlyHeldThings().RandomElement() as Neurolink_Harddrive; //%TEMP%
 			} else {
 				Debug.Log("[Neurolink_Dialog_Mainframe ERROR] Not supplied with thing of type Building_NeurolinkMainframe");
 			}
@@ -32,9 +38,10 @@ namespace Neurolink {
 			this.doCloseButton = true;
 			this.doCloseX = true;
 			this.absorbInputAroundWindow = true;
-			this.closeOnClickedOutside = true;
+			this.closeOnClickedOutside = false;
 			this.soundAppear = SoundDefOf.InfoCard_Open;
 			this.soundClose = SoundDefOf.InfoCard_Close;
+			this.draggable = true;
 		}
 
 		private void FillInfoTabs(Rect cardRect) {
@@ -64,7 +71,7 @@ namespace Neurolink {
 		public override void DoWindowContents(Rect inRect) {
 			//Title
 			Rect titleRect = new Rect(inRect);
-			titleRect = titleRect.ContractedBy(18f);
+			titleRect = titleRect.ContractedBy(17f);
 			titleRect.height = 34f;
 			titleRect.x += 34f;
 			Text.Font = GameFont.Medium;
@@ -76,11 +83,14 @@ namespace Neurolink {
 			//Inner Rectangle
 			Rect innerRect = new Rect(inRect);
 			innerRect.yMin = titleRect.yMax;
-			innerRect.yMax -= 38f;
+			innerRect.yMax -= 34f;
 			Widgets.DrawLineVertical(innerRect.x + innerRect.width/2, innerRect.y, innerRect.height);
 			Text.Font = GameFont.Small;
 			//Harddrive Info
 			Rect harddriveInfo = new Rect(innerRect.x, innerRect.y, innerRect.width / 2 - 17f, innerRect.height);
+			Rect cardRect = new Rect(harddriveInfo);
+			cardRect.y += 34f;
+			cardRect.yMax = innerRect.yMax;
 			if (selectedHarddrive != null) {
 				Rect harddriveInfoTabs = harddriveInfo;
 				List<TabRecord> tabs = new List<TabRecord>();
@@ -104,20 +114,22 @@ namespace Neurolink {
 				tabs.Add(needs);
 				if (tabs.Count > 1) {
 					harddriveInfoTabs.yMin += 45f;
-					TabDrawer.DrawTabs(harddriveInfoTabs, tabs, harddriveInfo.width);
+					TabDrawer.DrawTabs(harddriveInfoTabs, tabs, cardRect.width);
 				}
-				this.FillInfoTabs(harddriveInfo.ContractedBy(18f));
+				this.FillInfoTabs(cardRect.ContractedBy(17f));
 			}
 			//Harddrives
 			Rect harddrivesList = new Rect(innerRect.width/2 + 17f, innerRect.y, innerRect.width / 2 - 17f, innerRect.height);
-			Widgets.DrawBoxSolid(harddrivesList, Random.ColorHSV());
+			Widgets.DrawBoxSolid(harddrivesList, Color.black);
 			if (!thing.GetDirectlyHeldThings().NullOrEmpty()) {
-				List<Thing> contents = ThingOwnerUtility.GetAllThingsRecursively(thing);
-				Log.Message(contents.ToString());
-				Rect[] hdRect = new Rect[contents.Count];
-				for (int i = 0; i < contents.Count; i++) {
-					float hdRectY = (harddrivesList.yMax / contents.Count);
+				Thing[] contents = ThingOwnerUtility.GetAllThingsRecursively(thing).ToArray();
+				Rect[] hdRect = new Rect[contents.Length];
+				for (int i = 0; i < contents.Length; i++) {
+					float hdRectY = Mathf.Min(50f, (harddrivesList.yMax / contents.Length));
 					hdRect[i] = new Rect(harddrivesList.x, harddrivesList.y + hdRectY * i, harddrivesList.width, hdRectY);
+					if (Widgets.ButtonText(hdRect[i], "test", true, true, true)) {
+						this.selectedHarddrive = (Neurolink_Harddrive)contents.GetValue(i);
+					}
 				}
 			}
 			//Simulation
