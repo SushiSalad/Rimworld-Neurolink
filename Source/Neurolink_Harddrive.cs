@@ -15,6 +15,7 @@ namespace Neurolink
 
 		public Neurolink_Harddrive(Pawn pawn) {
 			CopyPawn(pawn);
+			//this.pawn.DeSpawn();
 		}
 
 		public void CopyPawn(Pawn basePawn) { //Function called when uploading a pawn's conciousness to a harddrive.
@@ -78,6 +79,7 @@ namespace Neurolink
 			pawn.records.pawn = pawn;
 
 			pawn.ageTracker = new Pawn_AgeTracker(pawn);
+			pawn.ageTracker.AgeBiologicalTicks = 0;
 			pawn.ageTracker.AgeChronologicalTicks = basePawn.ageTracker.AgeChronologicalTicks;
 			
 		}

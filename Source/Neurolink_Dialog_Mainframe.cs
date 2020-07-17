@@ -10,6 +10,8 @@ namespace Neurolink {
 		private Neurolink_Harddrive selectedHarddrive = null;
 
 		private Neurolink_Dialog_Mainframe.InfoCardTab tab;
+		private Vector2 scrollPosition = Vector2.zero;
+		private float listHeight;
 
 		public override Vector2 InitialSize {
 			get {
@@ -26,7 +28,9 @@ namespace Neurolink {
 			if (thing.GetType() == typeof(Building_NeurolinkMainframe)) {
 				this.thing = (Building_NeurolinkMainframe)thing;
 				this.Setup();
-				this.selectedHarddrive = this.thing.GetDirectlyHeldThings().RandomElement() as Neurolink_Harddrive; //%TEMP%
+				if (this.thing.GetDirectlyHeldThings().Count > 0) {
+					this.selectedHarddrive = this.thing.GetDirectlyHeldThings().RandomElement() as Neurolink_Harddrive; //%TEMP%
+				}
 			} else {
 				Debug.Log("[Neurolink_Dialog_Mainframe ERROR] Not supplied with thing of type Building_NeurolinkMainframe");
 			}
@@ -44,6 +48,7 @@ namespace Neurolink {
 			this.draggable = true;
 		}
 
+		//draws the harddrive's info tabs
 		private void FillInfoTabs(Rect cardRect) {
 			if (this.tab == Neurolink_Dialog_Mainframe.InfoCardTab.Character) {
 				CharacterCardUtility.DrawCharacterCard(cardRect, this.selectedHarddrive.pawn, null, default(Rect));
@@ -124,15 +129,22 @@ namespace Neurolink {
 			if (!thing.GetDirectlyHeldThings().NullOrEmpty()) {
 				Thing[] contents = ThingOwnerUtility.GetAllThingsRecursively(thing).ToArray();
 				Rect[] hdRect = new Rect[contents.Length];
+				Color buttonBgColor;
+				string buttonText = null;
+				Widgets.BeginScrollView(harddrivesList, ref this.scrollPosition, harddrivesList, true); //%TODO%
 				for (int i = 0; i < contents.Length; i++) {
-					float hdRectY = Mathf.Min(50f, (harddrivesList.yMax / contents.Length));
-					hdRect[i] = new Rect(harddrivesList.x, harddrivesList.y + hdRectY * i, harddrivesList.width, hdRectY);
-					if (Widgets.ButtonText(hdRect[i], "test", true, true, true)) {
+					Pawn pawn = ((Neurolink_Harddrive)contents[i]).pawn;
+					hdRect[i] = new Rect(harddrivesList.x, harddrivesList.y + 100f * i, harddrivesList.width, 100f);
+					buttonBgColor = Mouse.IsOver(hdRect[i]) ? Color.green : Color.gray;
+					buttonText = pawn.GetHashCode() + " | " + pawn.Name.ToStringFull + " | " + pawn.story.TitleCap 
+						+ " | " + pawn.ageTracker.AgeChronologicalYears;
+					if (Widgets.CustomButtonText(ref hdRect[i], buttonText, buttonBgColor, Color.white, Color.black)) {
 						this.selectedHarddrive = (Neurolink_Harddrive)contents.GetValue(i);
 					}
 				}
+				Widgets.EndScrollView();
 			}
-			//Simulation
+			//Simulation %TODO%
 		}
 	}
 }

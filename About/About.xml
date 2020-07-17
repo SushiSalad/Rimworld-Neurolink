@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>Neurolink</name>
-	<author>delle+sushi</author>
+	<author>delleSushi</author>
 	<supportedVersions>
 		<li>1.1</li>
 	</supportedVersions>
 	<description>A brain chip that allows for BMI and the uploading of consciousness.</description>
+	<packageId>delleSushi.Neurolink</packageId>
 </ModMetaData>

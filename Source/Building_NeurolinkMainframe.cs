@@ -15,7 +15,8 @@ namespace Neurolink {
 		//Checks if the building is usable by the pawn directed to do the job.
 		public bool CanUseMainframeNow { 
 			get {
-				return (!base.Spawned || !base.Map.gameConditionManager.ElectricityDisabled) && (this.powerComp == null || this.powerComp.PowerOn);
+				return (!base.Spawned || !base.Map.gameConditionManager.ElectricityDisabled) 
+							&& (this.powerComp == null || this.powerComp.PowerOn);
 			}
 		}
 
@@ -40,9 +41,7 @@ namespace Neurolink {
 				Job job = JobMaker.MakeJob(Neurolink_JobDefOf.Neurolink_UseMainframe, this);
 				myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 				PlayerKnowledgeDatabase.KnowledgeDemonstrated(Neurolink_ConceptDefOf.Neurolink_UsingMainframe, KnowledgeAmount.Total);
-				Log.Message("1");
-				innerContainer.TryAdd(new Neurolink_Harddrive(myPawn));
-				Log.Message("2");
+				innerContainer.TryAdd(new Neurolink_Harddrive(myPawn), false);
 			};
 			yield return new FloatMenuOption("Use neurolink mainframe", action, MenuOptionPriority.Default, null, null, 0f, null, null);
 			//Insert harddrive
